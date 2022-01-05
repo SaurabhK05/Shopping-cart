@@ -10,18 +10,17 @@
         </div>
     </section>
     <section>
-        <del class="small text-black-50">$199.95</del>
-        <i class="text-danger font-weight-bold">$99.98</i>
+        <del class="small text-black-50">{{ currency @price.original sign="$"}}</del>
+        <i class="text-danger font-weight-bold">{{ currency @price.current sign="$"}}</i>
     </section>
     <div>
         <h5>Color</h5>
         <div class="product-colors active-{{@color}}">
-            <span class="product-color color-red" 
-                {{on "click" (fn this.changeColor "red")}}>
-            </span>
-            <span class="product-color color-black" 
-                {{on "click" (fn this.changeColor "black")}}>
-            </span>
+            {{#each @colors as |colorInfo|}}
+                <span class="product-color {{concat 'color-' colorInfo.color}}" 
+                    {{on "click" (fn this.changeColor colorInfo.color)}}>
+                </span>    
+            {{/each}}
         </div>
     </div>
 </div>

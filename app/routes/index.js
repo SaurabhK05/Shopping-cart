@@ -1,3 +1,7 @@
 import Route from '@ember/routing/route';
-
-export default class IndexRoute extends Route {}
+import { products } from '../data/product';
+export default class IndexRoute extends Route {
+  model() {
+    return products;
+  }
+}

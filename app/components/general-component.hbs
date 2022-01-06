@@ -1,5 +1,15 @@
-<LinkTo @route="cart" class="cart-link">
+<LinkTo data-test-add-to-cart-button @route="cart" class="cart-link">
     <i class="fa fa-shopping-cart"></i>
+    
+    {{#if this.shoppingCart.itemList.length}}
+        <span class="cart-count d-inline-flex justify-content-center align-items-center">
+            {{this.shoppingCart.itemList.length}}
+        </span>    
+    {{/if}}
+    {{!-- <span>
+        {{this.cart}}
+    </span> --}}
+
 </LinkTo>
 
 <main class="container mt-5">

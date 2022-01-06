@@ -8,6 +8,17 @@
         </li>
         <li class="breadcrumb-item">Shopping Cart</li>
     </ol>
+    {{#each this.cart.itemList as |item|}}
+        <div class=" cart-item d-flex align-items-center">
+            <div class="cart-item-thumbnail">
+                <img src={{item.image}} alt="">
+            </div>
+            <div class="ml-3">
+                <h4 data-test-item-title>{{item.name}}</h4>
+                <i class="font-weight-bold">{{currency item.price sign="$"}}</i>
+            </div>
+        </div>
+    {{/each}}
     <section class="w-50 ml-auto text-right mb-5">
         <div class="row">
             <span class="col">Subtotal</span>

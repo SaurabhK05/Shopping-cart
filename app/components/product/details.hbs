@@ -1,6 +1,6 @@
 <div class="product-details">
     <section>
-        <h3>Beats Solo Wireless Headphones</h3>
+        <h3>{{@name}}</h3>
         <div class="text-warning">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -9,18 +9,29 @@
             <i class="fa fa-star-half-o"></i>
         </div>
     </section>
-    <section>
-        <del class="small text-black-50">{{ currency @price.original sign="$"}}</del>
+    <section class={{unless @details 'h4'}}>
+        <del data-test-original-price class="small text-black-50">{{ currency @price.original sign="$"}}</del>
         <i class="text-danger font-weight-bold">{{ currency @price.current sign="$"}}</i>
     </section>
-    <div>
-        <h5>Color</h5>
-        <div class="product-colors active-{{@color}}">
-            {{#each @colors as |colorInfo|}}
-                <span class="product-color {{concat 'color-' colorInfo.color}}" 
-                    {{on "click" (fn this.changeColor colorInfo.color)}}>
-                </span>    
-            {{/each}}
-        </div>
-    </div>
+    
+        {{#if @details }}
+            <div class="d-flex justify-content-between align-items-end">
+                <div>
+                    <h5>Color</h5>
+                    <div class="product-colors active-{{@color}}">
+                        {{#each @colors as |colorInfo|}}
+                            <span class="product-color {{concat 'color-' colorInfo.color}}" 
+                                {{on "click" (fn this.changeColor colorInfo.color)}}>
+                            </span>    
+                        {{/each}}
+                    </div>
+                    <button data-test-add-to-cart class="btn btn-info" type="button" {{on "click" this.addToCart}}> 
+                        <i class="fa fa-shopping-cart mr-1"></i>
+                        Add to cart
+                    </button>    
+                </div>
+            </div>
+        {{/if}}
+        
+    
 </div>

@@ -2,6 +2,7 @@
     <div class="product item-details-page">
         <Product::Image @src={{this.productImage}}/>
         <Product::Details 
+            @details={{true}}
             @name={{this.model.name}}
             @price={{this.model.price}}
             @colors={{this.model.colors}}
@@ -14,6 +15,12 @@
         {{#each this.model.features as |feature|}}
             <li>{{feature}}</li>
         {{/each}}
+       
     </ul>
+    {{!-- {{#each this.model as |product|}}
+        <Product @product={{product}} />
+    {{/each}} --}}
+        <Product @product={{this.product.id}} />
+    
     
 </GeneralComponent>

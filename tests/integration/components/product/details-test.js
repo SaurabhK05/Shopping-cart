@@ -10,17 +10,13 @@ module('Integration | Component | product/details', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Product::Details />`);
-
-    assert.dom(this.element).hasText('');
+    this.set('price', {
+      original: 100,
+      current: 69,
+    });
+    await render(hbs`<Product::Details @price={{this.price}}/>`);
+    assert.dom('[data-test-original-price]').hasText('$100.00');
 
     // Template block usage:
-    await render(hbs`
-      <Product::Details>
-        template block text
-      </Product::Details>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
   });
 });

@@ -1,26 +1,25 @@
 <GeneralComponent>
-    <div class="product item-details-page">
+    <div class="product-item item-details-page">
         <Product::Image @src={{this.productImage}}/>
         <Product::Details 
             @details={{true}}
-            @name={{this.model.name}}
-            @price={{this.model.price}}
-            @colors={{this.model.colors}}
+            @name={{this.model.item.name}}
+            @price={{this.model.item.price}}
+            @colors={{this.model.item.colors}}
             @color={{this.color}} 
             @onChangedColor={{this.onChangedColor}}/>
     </div>
-
+    {{!-- <h1>{{this.model}}</h1> --}}
     <h5 class="mt-5">Features</h5>
     <ul>
-        {{#each this.model.features as |feature|}}
+        {{#each this.model.item.features as |feature|}}
             <li>{{feature}}</li>
         {{/each}}
        
-    </ul>
-    {{!-- {{#each this.model as |product|}}
-        <Product @product={{product}} />
-    {{/each}} --}}
-        {{!-- <Product @product={{this.product.id}} /> --}}
-    
-    
+    </ul>   
 </GeneralComponent>
+<div class="bottom-product">
+        {{#each this.model.data as |product|}}
+            <Product @product={{product}} />
+        {{/each}}
+</div>

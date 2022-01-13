@@ -1,6 +1,6 @@
 <div class="product-details">
     <section>
-        <h3>{{@name}}</h3>
+        <h3 data-test-name >{{@name}}</h3>
         <div class="text-warning">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -20,7 +20,7 @@
                     <h5>Color</h5>
                     <div class="product-colors active-{{@color}}">
                         {{#each @colors as |colorInfo|}}
-                            <span class="product-color {{concat 'color-' colorInfo.color}}" 
+                            <span data-test-color class="product-color {{concat 'color-' colorInfo.color}}" 
                                 {{on "click" (fn this.changeColor colorInfo.color)}}>
                             </span>    
                         {{/each}}

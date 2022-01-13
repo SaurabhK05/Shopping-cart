@@ -12,7 +12,7 @@ module('Integration | Component | general-component', function (hooks) {
 
     await render(hbs`<GeneralComponent />`);
 
-    // await click('[data-test-add-to-cart-button]');
+    await click('[data-test-add-to-cart-button]');
     // await this.pauseTest();
 
     // assert.dom(this.element).hasText('');

@@ -1,7 +1,12 @@
 import Route from '@ember/routing/route';
-import { products } from '../data/product';
+
+
 export default class IndexRoute extends Route {
-  model() {
-    return products;
+
+  async model() {
+    let response = await fetch('/api/product.json');
+    let { data } = await response.json();
+    // console.log(data);
+    return data;
   }
 }
